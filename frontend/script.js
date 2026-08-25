@@ -21,8 +21,10 @@ formulario.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      alert(`¡Éxito! ${data.message}`);
-      console.log("Datos de sesión:", data);
+      // Guardo el token en el localStorage
+      localStorage.setItem("token", data.access_token);
+      alert("¡Login exitoso! Redirigiendo...");
+      window.location.href = "dashboard.html";
     } else {
       alert(`Error: ${data.detail}`);
     }
